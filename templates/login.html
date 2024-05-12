@@ -19,6 +19,7 @@
 <body>
     {% if messages %}
     <div class="messages-container">
+        <h1>this is k8 trial</h1>
       {% for message in messages %}
           <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
               {{ message }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="font-size:16px; color:black;" class="fa cancel-icon" onclick="removeMessage(this)">&#xf00d;</i>
@@ -38,6 +39,7 @@
         <div>
             <input type="password" name="password" id="password" class="da" placeholder="Enter your password" >
         </div>
+
         <a class= "new_acc"href="{% url 'register' %}">Create a new account</a>.
         <div class="button_move">
             <button class="button_cart">
