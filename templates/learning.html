@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Courses</title>
+    <link rel="stylesheet" href="{% static 'css/learning.css' %}">
+
+
+
+    
+</head>
+<body>
+ 
+    
+    <h2 style="text-align:center; margin-top:20px">My learning</h2>
+    <div class="course-container">
+        {% if bought_courses %}
+            {% for payment in bought_courses %}
+    <a class="course_links" href="{% url 'course_details' payment.course_id.course_id%}">
+                <div class="course">
+                    <h5>{{ payment.course_id.course_name }}</h5>
+                    <p> <strong>{{ payment.course_id.instructor.first_name }} {{ payment.course_id.instructor.last_name }} </strong><p>
+                    <p><strong>Category:</strong> {{ payment.course_id.category }}</p>
+                    
+                   
+                </div>
+                </a>
+            {% endfor %}
+        {% else %}
+        <div class="empty_cart">
+            <h1>No courses bought yet &#128533;</h1>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Add any additional content or styling as needed -->
+</body>
+</html>
+{% endblock body %}

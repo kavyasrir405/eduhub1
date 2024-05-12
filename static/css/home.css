@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body{
+    
+    background-color: black;
+    /* background-color: lavender; */
+
+color: white;
+
+}
+.heading{
+    margin-top: 25px;
+}
+.heading h3{
+    text-align: center;
+}
+.container {
+    display: flex;
+    /* margin-top: 40px; */
+    height: 200px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#cont1{
+    position: relative;
+    top: 50px;
+
+}
+#cont2{
+    position: relative;
+    top: 130px;
+
+}
+
+.container div {
+    width: 200px;
+    /* box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); */
+    /* border: 1px solid; */
+    
+
+}
+.container a{
+    text-decoration: none;
+    color: black;
+}
+.container span{
+    font-size: 20px;
+    color: white;
+    display: block; /* Make the span a block-level element */
+text-align: center;
+position: relative;
+bottom: 15px;
+
+    
+}
+
+.cards{
+   
+}
+
+
+.cards img {
+width: 200px;
+height: 200px;
+border: 2px solid;
+border-radius: 10px;
+background-color: lavender;
+border-color: rgb(171, 171, 196);
+box-shadow: rgba(149, 135, 151, 0.884) 0 8px 15px;
+
+ 
+
+
+transition: transform 0.3s cubic-bezier(.2, 0, 1, .9);
+}
+
+    .cards:hover img {
+transform: scale(1.1); /* or any other transformation you desire */
+}
+

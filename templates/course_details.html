@@ -1,0 +1,375 @@
+
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="{% static 'css/course_details.css' %}">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <script src="{% static 'css/course_details.js' %}"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    {% comment %} <h3>course details</h3>
+{% for course in inner_course_details %}
+{% if course.course_image %}
+<img src="{{ course.course_image.url }}" alt="{{ course.course_name }}" height="250px" width="250px">
+{% endif %}
+
+<p>{{course.course_name}}</p>
+<p>&#8377; {{course.course_price}}</p>
+<p>{{course.course_description}}</p>
+<p>Instructor: {{ course.instructor_first_name }} {{ course.instructor_last_name }}</p>
+
+<form action="{% url 'add_to_cart' course.course_id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Add to Cart</button>
+</form>
+<form action="{% url 'payment' course.course_id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Buy</button>
+</form> {% endcomment %}
+
+{% comment %} <a href="http://127.0.0.1:8000/media/{{course.course_content}}">{{course.course_name}} </a>
+ {% endcomment %}
+ {% comment %} {% if  %}{% endif %} {% endcomment %}
+
+ {% comment %} {% if course.course_content %}
+ {% if paid %}
+ <a href="{{ course.course_content.url }}">{{ course.course_name }}</a>
+ {%else%}
+ <a href="">{{ course.course_name }}</a>
+ {% endif %}
+ {% endif %}
+
+{% endfor %}  {% endcomment %}
+<div class="mainbox">
+<div class="dabba1">
+    <div class="main_course_contents">
+{% for course in inner_course_details %}
+<h2>{{course.course_name}}</h2>
+<h5>Instructor: {{ course.instructor_first_name }} {{ course.instructor_last_name }}</h5>
+
+<br>
+<p>{{course.course_description}}</p>
+
+<button class="button_price" role="button">&#8377; {{course.course_price}}</button>
+{%if not paid%}
+<form action="{% url 'add_to_cart' course.course_id %}" method="post">
+    {% csrf_token %}
+    <div class="button_move">
+    <button class="button_cart">
+        <span>Add to cart</span>
+        <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+        </svg>
+      </button>
+    </div>
+</form>
+{%else%}
+<a href="{% url 'feedback' course.course_id %}">
+   <div class="button_move">
+      <button class="button_cart">
+          <span>Feedback</span>
+          <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+          </svg>
+        </button>
+      </div>
+</a>
+{%endif%}
+{% endfor %} 
+</div>
+</div>
+
+
+<div class="dabba2">
+    <div class="course_topics">
+    <h3>Topics covered</h3>
+{% for course in inner_course_details %}
+<p class="topics" ><span class="check_mark">&#10004;</span> {{ course.course_topic1 }}</p>
+<p class="topics"> <span class="check_mark">&#10004;</span> {{ course.course_topic2 }}</p>
+<p class="topics" > <span class="check_mark">&#10004;</span>{{ course.course_topic3 }}</p>
+<p class="topics"> <span class="check_mark">&#10004;</span>{{ course.course_topic4 }}</p>
+    
+    {% comment %} <p class="check_mark">&#10004; {{ course.course_topic1 }}</li>
+    <li class="check_mark">&#10004; {{ course.course_topic1 }}</li>
+    <li class="check_mark">&#10004; {{ course.course_topic1 }}</li>
+    <li class="check_mark">&#10004; {{ course.course_topic1 }}</li> {% endcomment %}
+
+
+</div>
+</div>
+</div>
+
+
+{% if course.course_content %}
+
+
+   <h1 class="h1_tags">Course contents</h1>
+   <div class="section_articles">
+
+<div class="sections">
+    
+<div class="section_heading">
+    <div id="div1" class="clickable-div active-clickable2" onclick="showContent('div1_content', 'div1')"><p>Preview</p></div>
+   {%if not paid%}
+    <div id="div2" class="clickable-div" onclick="showContent('div2_content', 'div2')"><p>Section 1 <i style="font-size:24px" class="fa">&#xf023;</i></p></div>
+    <div id="div3" class="clickable-div" onclick="showContent('div3_content', 'div3')"><p>Section 2 <i style="font-size:24px" class="fa">&#xf023;</i></p> </div>
+    {%else%}
+    <div id="div2" class="clickable-div" onclick="showContent('div2_content', 'div2')"><p>Section 1 </p></div>
+    <div id="div3" class="clickable-div" onclick="showContent('div3_content', 'div3')"><p>Section 2</p> </div>
+{%endif%}
+
+</div>
+<div class="section_content">
+
+  <div id="div1_content" class="content-div">
+    <h6>Section one  main topic heading</h6>
+
+ <div class="article_link">
+    <p>Preview Article name <a href="{{ course.course_content.url }}" class="thin-underline">Article&nbsp; &#8599;</a>
+        
+
+    </p> 
+
+ </div>
+ <div class="article_link">
+   <p>Preview Article name<a href="{{ course.course_content.url }}" class="thin-underline">Article&nbsp; &#8599;</a>
+        
+
+    </p> 
+
+ </div>
+ <div class="article_link">
+   <p>Preview Article name <a href="{{ course.course_content.url }}" class="thin-underline">Article&nbsp; &#8599;</a>
+        
+
+    </p> 
+
+ </div>
+
+ 
+
+
+  </div>
+
+  <div id="div2_content" class="content-div">
+  
+    <h6>Section two  main topic heading</h6>
+   
+ <div class="article_link">
+   {% if paid %}
+   <p>Section1 Article name <a href="{{ course.course_content.url }}" class="thin-underline">Article&nbsp; &#8599;</a></p>
+      {%else%}
+      
+      <p>Section1 Article name <a href="" class="thin-underline">Article&nbsp; &#8599;</a>
+
+        
+
+    </p> 
+    {%endif%}
+
+ </div>
+ <div class="article_link">
+   {% if paid %}
+   <p>Section1 Article name <a href="{{ course.course_content.url }}" class="thin-underline">Article&nbsp; &#8599;</a></p>
+      {%else%}
+      <p>Section1 Article name <a href="" class="thin-underline">Article&nbsp; &#8599;</a>
+
+        
+
+    </p> 
+    {%endif%}
+
+ </div>
+ <div class="article_link">
+   {% if paid %}
+   <p>Section1 Article name <a href="{{ course.course_content.url }}" class="thin-underline">Article&nbsp; &#8599;</a></p>
+      {%else%}
+      <p>Section1 Article name <a href="" class="thin-underline">Article&nbsp; &#8599;</a>
+
+        
+
+    </p> 
+    {%endif%}
+
+
+ </div>
+ <div class="warn">
+  {% if not paid %}
+  
+  
+  <p  > <i class="fa fa-info-circle"></i>  <i>Buy this course to access more content</i></p>
+
+  
+
+ {%endif%}
+</div>
+
+ 
+
+  </div>
+
+  <div id="div3_content" class="content-div">
+  
+
+  <h6>Section two  main topic heading</h6>
+ <div class="article_link">
+   {% if paid %}
+   <p>Section2 Article name <a href="{{ course.course_content.url }}" class="thin-underline">Article&nbsp; &#8599;</a></p>
+      {%else%}
+      <p>Section2 Article name <a href="" class="thin-underline">Article&nbsp; &#8599;</a>
+
+        
+
+    </p> 
+    {%endif%}
+
+
+ </div>
+ <div class="article_link">
+   {% if paid %}
+   <p>Section2 Article name <a href="{{ course.course_content.url }}" class="thin-underline">Article&nbsp; &#8599;</a></p>
+      {%else%}
+      <p>Section2 Article name <a href="" class="thin-underline">Article&nbsp; &#8599;</a>
+
+        
+
+    </p> 
+    {%endif%}
+
+
+ </div>
+ <div class="article_link">
+   {% if paid %}
+   <p>Section2 Article name <a href="{{ course.course_content.url }}" class="thin-underline">Article&nbsp; &#8599;</a></p>
+      {%else%}
+      <p>Section2 Article name <a href="" class="thin-underline">Article&nbsp; &#8599;</a>
+
+        
+
+    </p> 
+    {%endif%}
+
+
+ </div>
+ <div class="warn">
+  {% if not paid %}
+  
+  
+  <p  > <i class="fa fa-info-circle"></i>  <i>Buy this course to access more content</i></p>
+
+  
+
+ {%endif%}
+</div>
+
+ 
+
+  </div>
+
+ 
+
+</div>
+</div>
+
+<form method ="post" class="form1"  >
+   {% csrf_token %}
+   <h3>Clear your doubts!</h3>
+   <p><label for="id_question_text">Question text:</label></p>
+   <p><textarea   required id="id_question_text" name="ques"></textarea></p>
+   {%if paid%}
+   <div class="button_move1">
+      <button class="button_cart1">
+          <span>Post Question</span>
+          <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+          </svg>
+        </button>
+      </div>
+      {%else%}
+      <i class="fa fa-info-circle"></i>  <i>Buy this course to clear your doubts</i>
+      {%endif%}
+
+</form>
+</div>
+ 
+
+{%if paid%}
+<h1 style="margin-left:50px">Q&A Page Section</h1>
+{% if answers %}
+
+{% for ans in answers %}
+   
+    
+{% comment %} {% if answers %} {% endcomment %}
+{% comment %} {% for ans in answers %} {% endcomment %}
+<div class="unansweredQues">
+   {% comment %} <p>{{ans.question_text}}</p> {% endcomment %}
+  
+  <div class="qa-container">
+   <h3>Q: {{ans.question_text}}?</h3>
+   <p style=" font-size:18px"> {{ans.answer_text}}</p>
+ </div>
+ {% endfor %}
+ {% else %}
+
+ 
+ <div class="qa-container">
+   
+   <p> Wait for  answer</p>
+ </div>
+ {% endif %}
+   
+
+
+
+{% comment %} {% endfor %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
+
+
+</div>
+
+{%endif%}
+
+
+
+
+{% endif %}
+<script>
+    function showContent(contentId, sectionId) {
+        var contentDivs = document.querySelectorAll('.content-div');
+        var clickableDivs = document.querySelectorAll('.clickable-div');
+
+        contentDivs.forEach(function (div) {
+            div.style.display = 'none';
+        });
+
+        clickableDivs.forEach(function (div) {
+            div.classList.remove('active-clickable2');
+            div.classList.add('active-clickable1');
+        });
+
+        var showContentDiv = document.getElementById(contentId);
+        var showSectionDiv = document.getElementById(sectionId);
+
+        showContentDiv.style.display = 'block';
+        showSectionDiv.classList.remove('active-clickable1');
+        showSectionDiv.classList.add('active-clickable2');
+    }
+</script>
+  
+  {% endfor %} 
+
+</body>
+</html>
+
+{% endblock body %}
+
+
+

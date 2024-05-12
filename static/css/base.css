@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Karla', sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Karla', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;    
+    padding: 10px;
+    color: white;
+    /* border: 2px solid lavender; */
+  
+
+   
+
+
+}
+
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item:hover .nav-link {
+color: black; /* Change this to the desired color */
+}
+
+
+.search-bar {
+    margin-right: 10px;
+    
+    
+}
+.form-control {
+  background-color: black; /* Change this to the desired color */
+  color: black; /* Change this to the desired text color */
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu {
+  background-color: lavender;
+/* box-shadow: rgba(149, 135, 151, 0.884) 0 8px 15px; */
+ 
+}
+.dropdown-menu a{
+  /* border: 2px solid white; */
+  margin-bottom: 2px;
+  text-align: center;
+}
+.dropdown-menu p{
+  /* border: 2px solid white; */
+  color:black;
+  
+  margin-bottom: 2px;
+  text-align: center;
+}
+.dropdown-divider{
+  border-bottom: 2px solid black;
+}
+
+.dropdown-item {
+
+  color:black;
+   
+  font-weight: 600;
+}
+
+.dropdown-item:hover {
+
+  background-color: lavender;
+ 
+}
+
+
+
+
+.navbar-nav .nav-item {
+    margin-right: 15px; 
+}
+.dropdown button {
+  padding: 10px 15px;
+  min-width: 70px;
+
+ 
+  color: black;
+}
+.dropdown button:hover
+ {
+ color: white;
+}
+.navbar-nav .nav-item a.nav-link {
+    color: black;
+    min-width: 70px;
+    
+    text-decoration: none;
+    transition: color 0.3s; /* Add a smooth color transition */
+}
+
+.navbar-nav .nav-item a.nav-link:hover {
+    color: white; /* Change this to the desired hover color */
+}
+
+
+
+/* CSS */
+.button-27 {
+  appearance: none;
+  background-color: lavender;
+  border: 2px solid #1A1A1A;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 40px;
+  min-width: 0;
+  outline: none;
+  /* padding: 10px; */
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+.button-27:hover {
+  box-shadow: rgba(200, 187, 202, 0.884) 0 8px 15px;
+  background-color: black;
+
+  transform: translateY(-2px);
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.btn-search {
+    background-color: lavender;
+    padding: 5px;
+    border-color: black;
+     color: black;
+}
+.btn-search:hover{
+    background-color: black;
+    color: white;
+    border-color: black;
+  box-shadow: rgba(200, 187, 202, 0.884) 0 8px 15px;
+
+
+}
+.custom-search-input {
+    caret-color: white; 
+}
+.custom-search-input {
+    
+   background-color: black;
+   color: white;
+
+}
+
+.custom-search-input:focus {
+    background-color: black; 
+
+    border-color: lavender; 
+}
+
+    .cancel-icon {
+        cursor: pointer; /* or any other cursor style you prefer */
+    }

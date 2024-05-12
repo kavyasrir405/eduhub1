@@ -1,0 +1,67 @@
+/* learning.css */
+
+body {
+    background-color: lavender;
+}
+
+.course-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow flex items to wrap to the next line */
+    justify-content: space-evenly; /* Adjust as needed */
+    margin-top: 50px;
+ 
+}
+.course_links:hover {
+    text-decoration: none;
+
+}
+
+/* Styles for individual course cards */
+.course {
+   
+    border: 1px solid #ccc;
+    border-radius: 8px;
+   width: 350px;
+   height: 250px;
+    padding: 15px;
+    margin: 0 10px 20px 10px; /* Adjusted margin for spacing between cards */
+    background-color: black;
+    color: white;
+    transition: transform 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  text-decoration: none;
+
+}
+.course:hover {
+    transform: scale(1.05); /* Increase the size on hover */
+}
+.course a{
+    text-decoration: none;
+}
+
+.course h5 {
+    
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.course p {
+    color: #e4e4e4;
+}
+
+.empty_cart {
+    position: relative;
+    top: 100px;
+
+    border: 1px solid;
+    color: white;
+    background-color: black;
+    width: 600px;
+    height: 200px;
+}
+
+.empty_cart h1 {
+    position: relative;
+    top: 50px;
+    left: 50px;
+}

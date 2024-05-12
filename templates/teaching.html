@@ -1,0 +1,109 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Right aligning div element</title>
+	<link rel="stylesheet" href="{% static 'css/teaching.css' %}">
+</head>
+
+<body>
+  <div class="main">
+     <div class="sidebar">
+      
+      <div class="icons" id="icons1">
+        <img src="{%static 'edu.jpg'%}" alt="Icon 1">
+        <span class="icon-text" ><a href="/home" class="icon-text"></a>EDUHUB</span> 
+      </div>
+
+      <div class="icons" id="icons2">
+        <img src="{%static 'qna.png'%}" alt="Icon 2">
+        <span class="icon-text"><a href="/question" class="icon-text">QnA</a></span>
+      </div>
+
+    <div class="icons" id="icons3">
+        <img src="{%static 'feedback.png'%}" alt="Icon 3">
+        <span class="icon-text"><a href="/instruct_feedback" class="icon-text">FEEDBACK</a></span>
+    </div>
+    
+   
+      </div> 
+	
+	<div class="container">
+    <div  id="dabba1">
+      {% if user %}
+        <div id="userName">
+          <p>welcome {{user.first_name}} </p>
+        </div>
+        {% else %}
+              <p>User not logged in</p>
+          {% endif %}
+      </div>
+      <div class="item">
+      <div class="item1"><a href="/home">Student</a></div>
+      <div  class="item2" >
+        {% if user %}
+        <div class="profile-id" style="background-color:rgb(224, 110, 215);;width:30px;height:30px;border-radius: 50%;text-align: center;"><span class="userName" style="margin-top:3px ;">{{ user.first_name.0 }}{{ user.last_name.0 }}</span></div>
+        <div class="profile-details">Profile Details:
+          <p>Name: {{user.first_name}} {{ user.last_name}}</p>
+        <p>Email: {{user.email}}</p>
+        {% else %}
+              <p>User not logged in</p>
+          {% endif %}
+        </div>
+      </div>
+      </div>
+	</div>
+  
+  <div class="search">
+    <form action="#">
+      <input type="text" placeholder=" Search Courses" name="search" style="z-index:1;">
+      <button class="update_btn" > <a href="/upload">Upload</a>
+        
+      </button>
+    </form>
+  </div>
+</div>
+<div class="courseList">
+  {% if user_courses %}
+  {% for course in user_courses %}
+      <div class="course-item">
+        <div class="course_img">
+
+          <img src="{%static 'development.png'%}" alt="" height="240px" width="240px">
+      </div>
+      
+      <div class="course_content">
+          <h1>{{ course.course_name }}</h1>
+          
+          
+          <!-- <h3>Instructor: {{ course.instructor_first_name }} {{ course.instructor_last_name }}</h4>
+          {% comment %} <h3>Instructor: {{ course.instructor_first_name }} {{ course.instructor_last_name }}</h4> {% endcomment %} -->
+      
+      <br>
+          <p>{{course.course_description}}</p>
+          <span class="button_price">  &#8377;{{course.course_price}}</span>
+      </div>
+    </div>
+  {% endfor %}
+
+  {% else %}
+  
+        <div class="empty_cart">
+          <div class="childdabba">
+            <div class="image">
+          <img class="image1" src="{% static 'image1.png' %}" alt=""></div>
+          
+        </div>
+        <div class="dabbba">
+          <p><h1 class="msg" >No courses uploaded yet &#128533;</h1></p></div>
+        </div>
+        {% endif %}
+</div>
+</body>
+<script src="{% static 'teaching.js' %}"></script>
+
+
+</html>

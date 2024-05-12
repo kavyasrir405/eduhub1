@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Upload Form</title>
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+</head>
+<body>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="page1">
+        <div class="">
+        <!-- Course Name -->
+        <label for="courseName">Course Name:</label>
+        <input type="text" id="courseName" name="courseName" maxlength="50" required>
+
+        <!-- Course Description -->
+        <label for="courseDescription">Course Description:</label>
+        <textarea id="courseDescription" name="courseDescription" rows="4" maxlength="250" required></textarea>
+
+        <!-- Course Price -->
+        <label for="coursePrice">Course Price:</label>
+        <input type="text" id="coursePrice" name="coursePrice" maxlength="4"required>
+
+        <!-- Course Content (File Upload) -->
+         <label for="courseContent">Course IMAGE:</label>
+        <input type="file" id="courseContent" name="courseImage"  required> 
+
+        <!-- Course Content (File Upload) -->
+        <label for="courseContent">Course Content (PDF):</label>
+        <input type="file" id="courseContent" name="courseContent" accept=".pdf" required>
+
+        <label for="category">Category:</label>
+    <select id="category" name="category" required>
+        <option value="" disabled selected>Select a category</option>
+        <option value="Development">Development</option>
+        <option value="Fitness">Fitness</option>
+        <option value="Photography">Photography</option>
+        <option value="Lifestyle">Lifestyle</option>
+        <option value="Music">Music</option>
+        <option value="Business">Business</option>
+        <option value="Design">Design</option>
+        <option value="Finance">Finance</option>
+    <!-- Add more options as needed -->
+    </select>
+</div>  
+        <div class="button_move">
+            <button class="button_cart" type="submit" onclick="nextpage()" id="nextbtn">
+                <span>Next</span>
+                <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+                </svg>
+              </button>
+            </div>
+    </div>
+    <div id="page2" style="display: none;">
+        <div class="">
+        <label>What will students learn from this course?</label>
+    
+        <label for="topic1">Topic 1:</label>
+        <input type="text" id="topic1" name="Topic1" required maxlength="100">
+    
+        <label for="topic2">Topic 2:</label>
+        <input type="text" id="topic2" name="Topic2" required maxlength="100">
+    
+        <label for="topic3">Topic 3:</label>
+        <input type="text" id="topic3" name="Topic3" required maxlength="100">
+    
+        <label for="topic4">Topic 4:</label>
+        <input type="text" id="topic4" name="Topic4" required maxlength="100">
+        </div>
+        <div class="myBtns">
+        <div class="button_move">
+            <button class="button_cart" type="submit" onclick="prevpage()" id="backbtn">
+                <span>Back</span>
+                <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+                </svg>
+              </button>
+            </div>
+        
+        
+        <div class="button_move">
+            <button class="button_cart" type="submit" formaction="" id="submitbtn">
+                <span>Submit</span>
+                <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+                </svg>
+              </button>
+            </div>
+        </div>
+    </div>
+    
+    </form>
+    <script>
+        function nextpage() {
+            saveFormDataPage1()
+            document.getElementById("page1").style.display = 'none';
+            document.getElementById("page2").style.display = 'block';
+            // loadFormDataPage2() 
+            
+        }
+    
+        function prevpage() {
+            // saveFormDataPage2()
+            document.getElementById("page2").style.display = 'none';
+            document.getElementById("page1").style.display = 'block';
+            loadFormDataPage1()
+        }
+        function saveFormDataPage1() {
+    var courseNameValue = document.getElementById('courseName').value.trim();
+    var courseDescriptionValue = document.getElementById('courseDescription').value.trim();
+    var coursePriceValue = document.getElementById('coursePrice').value.trim();
+    var categoryValue = document.getElementById('category').value.trim();
+
+    // Save data to local storage for page1
+    localStorage.setItem('courseNamePage1', courseNameValue);
+    localStorage.setItem('courseDescriptionPage1', courseDescriptionValue);
+    localStorage.setItem('coursePricePage1', coursePriceValue);
+    localStorage.setItem('categoryPage1', categoryValue);
+}
+
+function loadFormDataPage1() {
+    // Load data from local storage for page1 and populate the form fields
+    var storedCourseName = localStorage.getItem('courseNamePage1');
+    var storedCourseDescription = localStorage.getItem('courseDescriptionPage1');
+    var storedCoursePrice = localStorage.getItem('coursePricePage1');
+    var storedCategory = localStorage.getItem('categoryPage1');
+
+    // Populate the form fields in page1 only if the stored values are not empty
+    if (storedCourseName !== null && storedCourseName !== '') {
+        document.getElementById('courseName').value = storedCourseName;
+    }
+
+    if (storedCourseDescription !== null && storedCourseDescription !== '') {
+        document.getElementById('courseDescription').value = storedCourseDescription;
+    }
+
+    if (storedCoursePrice !== null && storedCoursePrice !== '') {
+        document.getElementById('coursePrice').value = storedCoursePrice;
+    }
+
+    if (storedCategory !== null && storedCategory !== '') {
+        document.getElementById('category').value = storedCategory;
+    }
+}
+
+function saveFormDataPage2() {
+    var topic1Value = document.getElementById('topic1').value.trim();
+    var topic2Value = document.getElementById('topic2').value.trim();
+    var topic3Value = document.getElementById('topic3').value.trim();
+    var topic4Value = document.getElementById('topic4').value.trim();
+
+    // Save data to local storage for page2
+    localStorage.setItem('topic1Page2', topic1Value);
+    localStorage.setItem('topic2Page2', topic2Value);
+    localStorage.setItem('topic3Page2', topic3Value);
+    localStorage.setItem('topic4Page2', topic4Value);
+}
+
+function loadFormDataPage2() {
+    // Load data from local storage for page2 and populate the form fields
+    var storedTopic1 = localStorage.getItem('topic1Page2');
+    var storedTopic2 = localStorage.getItem('topic2Page2');
+    var storedTopic3 = localStorage.getItem('topic3Page2');
+    var storedTopic4 = localStorage.getItem('topic4Page2');
+
+    // Populate the form fields in page2 only if the stored values are not empty
+    if (storedTopic1 !== null && storedTopic1 !== '') {
+        document.getElementById('topic1').value = storedTopic1;
+    }
+
+    if (storedTopic2 !== null && storedTopic2 !== '') {
+        document.getElementById('topic2').value = storedTopic2;
+    }
+
+    if (storedTopic3 !== null && storedTopic3 !== '') {
+        document.getElementById('topic3').value = storedTopic3;
+    }
+
+    if (storedTopic4 !== null && storedTopic4 !== '') {
+        document.getElementById('topic4').value = storedTopic4;
+    }
+}
+
+    </script>
+    
+</body>
+</html>

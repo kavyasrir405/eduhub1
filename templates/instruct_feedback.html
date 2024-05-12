@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lavendar;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .feedback-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color:lavendar;
+           
+        }
+
+        .feedback-item {
+            background-color:#000;
+            color:white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+        .feedback-item h4 {
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .feedback-item p {
+            margin-bottom: 0;
+            color: white;
+        }
+    </style>
+    <title>Feedbacks</title>
+</head>
+<body>
+    <h3>Feedbacks</h3>
+
+    <div class="feedback-container">
+        {% for feedback in feedback_to %}
+            <div class="feedback-item">
+                <h4>Student: {{ feedback.student.first_name }} {{ feedback.student.last_name }}</h4>
+                <h4>Course: {{ feedback.course.course_name }}</h4>
+                <p>{{ feedback.feedback_text }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

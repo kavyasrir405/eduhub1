@@ -1,0 +1,31 @@
+.messages-container {
+    background-color: black;
+    color: white;
+    width: 400px;
+    margin-top: 20px;
+    margin-left: 20px;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    transition: opacity 0.5s ease-in-out; /* Add transition for smooth fade-out */
+}
+
+.message {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Additional styling for specific message tags if needed */
+.error {
+    color: red;
+    font-weight: 600;
+
+}
+
+.success {
+    color: white;
+    font-weight: 600;
+
+}
+.cancel-icon {
+    cursor: pointer; /* or any other cursor style you prefer */
+}

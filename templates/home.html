@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="{% static 'css/home.css' %}">
+ <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+ <link rel="stylesheet" href="{% static 'js/messages.js' %}">
+
+
+
+    
+    <title>Document</title>
+  
+</head>
+<body>
+<div class="heading"><h3>CATEGORIES</h3></div>
+
+
+    
+    <div class="container" id="cont1">
+        <!-- First four divs -->
+       <a href="{% url "development" 'Development'%}"> <div class="cards">
+        <span>Development</span>
+
+            <img src="static/development.png" alt="">
+        </div></a>
+
+        <a href="{% url "finance" 'Finance'%}"> <div class="cards">
+            <span>Finance</span>
+
+            <img src="static/finance.png" alt="">
+        </div></a>
+
+        <a href="{% url "fitness" 'Fitness'%}"> <div class="cards">
+            <span>Fitness</span>
+
+            <img src="static/fitness.png" alt="">
+        </div></a>
+
+        <a href="{% url 'lifestyle' 'Lifestyle'%}"><div class="cards">
+            <span>Lifestyle</span>
+
+            <img src="static/lifestyle.png" alt="">
+        </div></a>
+    </div>
+
+    <div class="container" id="cont2">
+        <!-- Last four divs -->
+       <a href="{% url 'design' 'Design'%}"> <div class="cards">
+        <span>Design</span>
+
+            <img src="static/design.png" alt="">
+        </div></a>
+
+       <a href="{% url 'music' 'Music'%}"> <div class="cards">
+        <span>Music</span>
+
+            <img src="static/music.png" alt="">
+        </div></a>
+
+        <a href="{% url 'buisness' 'Business'%}"><div class="cards">
+            <span>Business</span>
+
+            <img src="static/buisness.png" alt="">
+        </div></a>
+
+        <a href="{% url 'photography' 'Photography'%}"> <div class="cards">
+            <span>Photography</span>
+
+            <img src="static/photography.png" alt="">
+        </div></a>
+    </div>
+
+    <div></div>
+</body>
+</html>
+{% endblock body %}

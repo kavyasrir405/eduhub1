@@ -1,0 +1,46 @@
+<!-- instructor_page.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/question.css' %}">
+    <title>Instructor Page</title>
+</head>
+<body>
+    <h1>Instructor Page</h1>
+
+    <h2>Unanswered Questions</h2>
+    <div class="container">
+    {% if unanswered_questions %}
+    {% for question in unanswered_questions %}
+    <div class="unansweredQues">
+    <form method="post" action="{% url 'answer' ques_id=question.question_id  %}">
+        {% csrf_token %}
+        
+            
+          
+           <div class="query">
+                <strong>Question:</strong> {{ question.question_text }}<br>
+                <textarea name="answer_text" placeholder="Type your answer here"></textarea>
+                <button type="submit" class="update_btn">Answer Question</button>
+            </div>
+                <div class="info">
+                <p>Student: {{  question.student_id.first_name }}</p><br>
+                <p>Course: {{  question.course_id.course_name }}</p><br>
+            </div>
+        
+        
+      
+    </form>
+</div>
+{% endfor %}
+{% else %}
+    <p>no questions yet</p>
+
+{% endif %}
+</div>
+</body>
+</html>

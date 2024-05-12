@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    
+</head>
+<body>
+    {% if cart_items %}
+
+    <h1>Your Cart</h1>
+   
+    <div class="full">
+        <div class="left">
+            {% for item in cart_items %}
+                <div class="cart_container">
+                    <div class="cart_courses_img">
+                        <img src="{% static 'development.png' %}" alt="" height="100px" width="100px">
+                    </div>
+                    <div class="cart_courses">
+                        <h4>{{ item.course_id.course_name }}</h4>
+                        <h5 style="font-size: 15px">{{ item.course_id.instructor.first_name }} {{ item.course_id.instructor.last_name }}</h5>
+                        <span><button class="button_price">&#8377;{{ item.course_id.course_price }}</button></span>
+                        <span>
+                            <form action="{% url 'remove_from_cart' item.course_id.course_id %}" method="post">
+                                {% csrf_token %}
+                                <div class="button_move1">
+                                    <button class="button_cart">
+                                        <span>Remove from cart</span>
+                                        <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+                                          <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+                                        </svg>
+                                      </button>
+                                    </div>
+                            </form>
+                        </span>
+                    </div>
+                </div>
+                <br>
+{% endfor %}
+            
+        </div>
+        <div class="right">
+            <div class="calculation">
+                <h2> Summary</h2>
+                
+                <h2 class="total ">Total: &#8377;{{total_price}}</h2>
+                <form action="{% url 'payment'  %}" method="post">
+                    {% csrf_token %}
+                    <div class="button_move2">
+                        <button class="button_cart">
+                            <span>Checkout</span>
+                            <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+                              <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+                            </svg>
+                          </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    {% else %}
+    <div class="empty_cart">
+        <h1>Your cart is empty &#9786;</h1>
+    </div>
+    {% endif %}
+</body>
+</html>
+{% endblock body %}
+

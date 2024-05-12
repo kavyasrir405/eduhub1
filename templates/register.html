@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+    
+</head>
+<body>
+   <!-- registration.html -->
+<form action="{% url 'register' %}" method="POST">
+    {% csrf_token %}
+
+    <h2>Create User</h2>
+
+    <div class="regform">
+        {{ form.errors }} {# Display form-level errors here #}
+
+        <div>
+            <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+            {{ form.username }}
+        </div>
+
+        <div>
+            <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+            {{ form.email }}
+            <span class="error">{{ form.email.errors }}</span>
+        </div>
+
+        <div>
+            <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+            {{ form.password1 }}
+            <span class="error">{{ form.password1.errors }}</span>
+        </div>
+
+        <div>
+            <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+            {{ form.password2 }}
+            <span class="error">{{ form.password2.errors }}</span>
+        </div>
+
+        <div>
+            <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+            {{ form.first_name }}
+            <span class="error">{{ form.first_name.errors }}</span>
+        </div>
+
+        <div>
+            <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+            {{ form.last_name }}
+            <span class="error">{{ form.last_name.errors }}</span>
+        </div>
+    </div>
+
+    <div class="button_move">
+        <button class="button_cart">
+            <span>Register</span>
+            <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+            </svg>
+        </button>
+    </div>
+</form>
+
+</body>
+</html>

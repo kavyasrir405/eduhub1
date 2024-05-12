@@ -1,0 +1,328 @@
+.body{
+  background-color: lavender;
+}
+.main{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+      #heading {
+          font-size: 42px;
+          font-weight: bold;
+          
+          margin-left: 20px;
+          margin-top: 5px;
+      }
+
+      .container {
+          background-color:white;
+          width: auto;
+    height:fit-content;
+    position:relative;
+    margin-left: 60px;
+    transition: margin-left 0.1s;
+        display: flex;
+        align-items: center;
+        justify-content: space-around; 
+      }
+.dabba1{
+  position:relative;
+  left:35px;
+  top:10px;
+}
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: space-around; 
+          /* width: 80px;
+          height: 80px; */
+          position: relative;
+          /* float: right; */
+          margin: 10px;
+      }
+      .item1{
+        position: relative;
+          float: right;
+          left:100px;
+          margin: 10px;
+      }
+      .item2{
+        position: relative;
+        left:200px;
+          float: right;
+          margin: 10px;
+      }
+  
+  .profile-id {
+    /* position: relative; */
+    margin-right: 10px;
+    cursor: pointer;
+    display:flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .profile-details {
+    width: max-content;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right:15%;
+    z-index: 2;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-id:hover + .profile-details {
+    display: block;
+}
+.search a {
+    color: white;
+    text-decoration: none;
+  }
+  
+.search {
+  box-shadow: rgba(229, 146, 242, 0.884) 0 8px 15px;
+     
+     z-index: 1;
+    margin-left: 100px;
+    position:relative;
+    top:10px;
+    height:90px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search form {
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    
+  }
+
+  .search input {
+    margin-left: 10px;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    width:95%;
+    flex:7;
+    
+  }
+  .search input[type="text"]:focus {
+    box-shadow: 0 0 5px rgba(217, 149, 218, 0.3); /* Adjust the shadow properties as needed */
+}
+
+
+  /* .search button {
+    background-color: rgb(231, 231, 210);
+    border: 1px solid #ddd;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+  } */
+  /* .update_btn {
+    margin-right: 35px;
+    background-color: #4caf50; 
+    color: white; 
+    padding: 8px; 
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer;
+  } */
+  .update_btn {
+    position:relative;
+    left:25px; 
+    z-index: 1;
+    appearance: none;
+    flex:1;
+    margin-right: 35px;
+    background-color: rgb(224, 110, 215);
+    border: 2px solid #1A1A1A;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    /* margin: 0;
+    min-height: 40px;
+    min-width: 0; */
+    outline: none;
+    /* padding: 10px; */
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+    will-change: transform;
+  }
+  
+  .update_btn:disabled {
+    pointer-events: none;
+  }
+  
+  .update_btn:hover {
+    box-shadow: rgba(200, 187, 202, 0.884) 0 8px 15px;
+    background-color: black;
+  
+    transform: translateY(-2px);
+  }
+  
+  .update_btn:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+  
+
+    .courseList{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 100px;
+        position:relative;
+        top:55px;
+        z-index: 1;
+        
+      }
+      .dabba1{
+        position:relative;
+        left:60px;
+        width:100vp;
+        text-align: center;
+            
+      }
+      #userName {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+    }
+    .image1 {
+      
+      height:250px;
+      position:relative;
+         
+    }
+    .empty_cart{
+      display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            height: 100vh;
+            /* margin-top:35px;*/
+    } 
+    .childdabba{
+      width: 200px;
+            height: 200px;
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            /* justify-items: center; */
+    }
+    .course-item{
+      border: 3px solid;
+      border-color: rgb(171, 171, 196);
+      border-radius: 10px;
+      display: flex;
+      width:1150px;
+      margin-left: 50px;
+      z-index: 1;
+      background-color: #000000;
+      color:  lavender;
+      margin-bottom: 25px;
+      transition: background-color 0.3s ease; 
+  }
+  .course-item:hover {
+      background-color: rgb(49, 49, 49); /* Change background color on hover */
+      color: lavender;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  
+      
+  }
+  .course_content{
+
+    /* border: 1px solid; */
+padding-top: 20px;
+padding-left: 20px;
+
+}
+h1{
+  font-size: 30px;
+  font-weight: 300;
+}
+h3{
+  font-size: 15px;
+  font-weight: 200;
+}
+.course_content{
+
+  /* border: 1px solid; */
+padding-top: 20px;
+padding-left: 20px;
+
+}
+
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  padding: 10px;
+  width: 40px; /* Set your desired width */
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  height: 100%;
+  color: lavendar;
+  transition: width 0.3s; /* Add a smooth transition effect */
+}
+.sidebar:hover {
+  width: 200px; 
+}
+.sidebar:hover .icon-text  {
+  
+  
+  display: inline; 
+}
+.icons{
+  margin-bottom:40px ;
+  cursor: pointer;
+  
+}
+#icons1{
+  margin-top:25px;
+}
+.icon-text {
+  display: none;
+  margin-left: 10px;
+}
+
+
+
+
+.sidebar img{
+  width:30px;
+  height:30px;
+  border-radius: 50%;
+}
+
+.icon-text{
+  text-decoration:none;
+  color: lavender;
+}
+.dabbba{
+  position: relative;
+  top:100px;
+
+  left:7px; 
+  
+}

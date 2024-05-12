@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lavender;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            
+            height: 100vh;
+        }
+
+        .profile-container {
+            width: 300px; /* Adjust the width as needed */
+            height:200px;
+            background-color: black;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow properties */
+            color: white;
+            margin: 0 auto;
+            position: relative;
+            top: 100px;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        a {
+            color: #9cf; /* Light blue color for links */
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        a:hover {
+            color: #6cc; /* Darker blue color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1>User Profile</h1>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Full Name:</strong> {{ user.get_full_name }}</p>
+        <p><strong>User ID:</strong> {{ user.user_id }}</p>
+
+        <!-- Additional profile details can be added here -->
+
+        {% comment %} <a href="{% url 'your_edit_profile_view_name' %}">Edit Profile</a> {% endcomment %}
+    </div>
+</body>
+</html>
